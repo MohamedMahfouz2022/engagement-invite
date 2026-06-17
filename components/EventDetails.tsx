@@ -56,7 +56,7 @@ export default function EventDetails() {
         </motion.div>
 
         {/* Detail Cards */}
-        <div className="flex flex-col gap-4 w-96 ">
+        <div className="flex flex-col gap-4 sm:w-56 md:w-80 lg:w-lg">
           {details.map((detail) => (
             <motion.div
               key={detail.label}

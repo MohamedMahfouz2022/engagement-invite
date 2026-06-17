@@ -34,11 +34,16 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
   return (
     <motion.div
       key="envelope-screen"
-      animate={phase === "lift" ? { opacity: 0, y: -60, scale: 0.88 } : { opacity: 1, y: 0, scale: 1 }}
+      animate={
+        phase === "lift"
+          ? { opacity: 0, y: -60, scale: 0.88 }
+          : { opacity: 1, y: 0, scale: 1 }
+      }
       transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
-      className="fixed inset-0 flex flex-col items-center justify-center z-[100]"
+      className="fixed inset-0 flex flex-col items-center justify-center gap-12 z-100"
       style={{
-        background: "linear-gradient(160deg, #FAF6F0 0%, #F5EFE6 40%, #EDE5D8 100%)",
+        background:
+          "linear-gradient(160deg, #FAF6F0 0%, #F5EFE6 40%, #EDE5D8 100%)",
         pointerEvents: phase === "lift" ? "none" : "auto",
       }}
     >
@@ -65,15 +70,18 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="mb-14 text-center px-6"
+        className="flex flex-col justify-center items-center gap-4 mb-14 text-center px-6"
       >
         <p
-          className="font-amiri text-2xl md:text-3xl mb-2"
+          className="font-amiri text-2xl md:text-3xl mb-4"
           style={{ color: "var(--champagne)" }}
         >
           بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
         </p>
-        <p className="font-arabic text-base" style={{ color: "var(--text-muted)" }}>
+        <p
+          className="font-arabic text-base"
+          style={{ color: "var(--text-muted)" }}
+        >
           لديك دعوة خاصة ✉️
         </p>
       </motion.div>
@@ -111,7 +119,10 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
 
           {/* Side flaps */}
           {/* Left flap */}
-          <div className="absolute inset-0 overflow-hidden rounded-2xl" style={{ zIndex: 1 }}>
+          <div
+            className="absolute inset-0 overflow-hidden rounded-2xl"
+            style={{ zIndex: 1 }}
+          >
             <div
               style={{
                 position: "absolute",
@@ -165,9 +176,16 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
                 border: "1px solid rgba(201,169,110,0.4)",
               }}
             >
-              <Mail size={16} style={{ color: "var(--champagne)" }} strokeWidth={1.5} />
+              <Mail
+                size={16}
+                style={{ color: "var(--champagne)" }}
+                strokeWidth={1.5}
+              />
             </div>
-            <p className="font-arabic text-xs" style={{ color: "var(--champagne)" }}>
+            <p
+              className="font-arabic text-xs"
+              style={{ color: "var(--champagne)" }}
+            >
               دعوة خطوبة
             </p>
           </div>
@@ -228,8 +246,8 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
               background:
                 "linear-gradient(135deg, #B8932A 0%, #D4AF5A 50%, #C9A96E 100%)",
               border: "2px solid rgba(255,255,255,0.4)",
-              bottom: "-24px",
-              left: "50%",
+              bottom: "42.5%",
+              left: "42.5%",
               transform: "translateX(-50%)",
               fontSize: "18px",
               color: "#fff",
@@ -265,14 +283,16 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
       </motion.div>
 
       {/* Sparkle dots */}
-      {([
-        { left: "12%", top: "20%", s: 3, d: 0.5 },
-        { left: "85%", top: "15%", s: 2, d: 1.2 },
-        { left: "8%",  top: "75%", s: 4, d: 0.8 },
-        { left: "90%", top: "70%", s: 3, d: 1.8 },
-        { left: "50%", top: "10%", s: 2, d: 2.2 },
-        { left: "40%", top: "85%", s: 3, d: 0.3 },
-      ] as const).map((sp, i) => (
+      {(
+        [
+          { left: "12%", top: "20%", s: 3, d: 0.5 },
+          { left: "85%", top: "15%", s: 2, d: 1.2 },
+          { left: "8%", top: "75%", s: 4, d: 0.8 },
+          { left: "90%", top: "70%", s: 3, d: 1.8 },
+          { left: "50%", top: "10%", s: 2, d: 2.2 },
+          { left: "40%", top: "85%", s: 3, d: 0.3 },
+        ] as const
+      ).map((sp, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full pointer-events-none"
@@ -284,7 +304,12 @@ export default function EnvelopeAnimation({ onOpen }: EnvelopeProps) {
             top: sp.top,
           }}
           animate={{ opacity: [0, 0.7, 0], scale: [0, 1, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, delay: sp.d, ease: "easeInOut" }}
+          transition={{
+            repeat: Infinity,
+            duration: 2.5,
+            delay: sp.d,
+            ease: "easeInOut",
+          }}
         />
       ))}
 
